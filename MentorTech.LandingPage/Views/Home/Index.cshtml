@@ -1,0 +1,121 @@
+﻿@model Lead
+
+@{
+    ViewData["Title"] = "Mentoria Tech";
+}
+
+<section class="py-5 rounded-4 text-white mb-5" style="background: linear-gradient(135deg, #0d6efd 0%, #0b3d91 100%);">
+    <div class="container px-4 px-md-5">
+        <div class="row align-items-center g-4">
+            <div class="col-lg-7">
+                <span class="badge bg-light text-primary fw-semibold mb-3">Mentoria individual para acelerar sua carreira</span>
+                <h1 class="display-5 fw-bold mb-3">Saia da estagnacao e conquiste seu proximo nivel em tecnologia</h1>
+                <p class="lead mb-4">Plano pratico, direcionamento estrategico e acompanhamento com foco em resultado real: entrevista, promocao, transicao ou recolocacao.</p>
+                <a href="#form-captura" class="btn btn-warning btn-lg fw-semibold">Quero minha avaliacao gratuita</a>
+            </div>
+            <div class="col-lg-5">
+                <div class="card border-0 shadow-sm">
+                    <div class="card-body p-4">
+                        <h2 class="h5 text-dark fw-bold mb-3">O que voce vai ganhar</h2>
+                        <ul class="list-unstyled text-dark mb-0">
+                            <li class="mb-2">Diagnostico completo do seu momento profissional</li>
+                            <li class="mb-2">Plano de acao com metas de curto e medio prazo</li>
+                            <li class="mb-2">Suporte para curriculo, LinkedIn e entrevistas tecnicas</li>
+                            <li>Direcionamento para crescer como dev, analista ou lideranca</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="mb-5">
+    <div class="container">
+        <div class="text-center mb-4">
+            <h2 class="fw-bold">Beneficios da Mentoria MentorTech</h2>
+            <p class="text-muted mb-0">Um metodo orientado a performance para voce evoluir com clareza.</p>
+        </div>
+        <div class="row g-4">
+            <div class="col-md-4">
+                <div class="card h-100 border-0 shadow-sm">
+                    <div class="card-body">
+                        <h3 class="h5 fw-bold">Estrategia personalizada</h3>
+                        <p class="text-muted mb-0">Cada sessao e adaptada ao seu objetivo e ao seu momento de carreira.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card h-100 border-0 shadow-sm">
+                    <div class="card-body">
+                        <h3 class="h5 fw-bold">Acompanhamento pratico</h3>
+                        <p class="text-muted mb-0">Voce recebe direcionamento aplicavel para executar entre os encontros.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card h-100 border-0 shadow-sm">
+                    <div class="card-body">
+                        <h3 class="h5 fw-bold">Foco em resultado</h3>
+                        <p class="text-muted mb-0">Mais seguranca para tomar decisoes e acelerar sua evolucao profissional.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="form-captura" class="pb-4">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <div class="card border-0 shadow">
+                    <div class="card-body p-4 p-md-5">
+                        <h2 class="h4 fw-bold mb-1">Fale com a MentorTech</h2>
+                        <p class="text-muted mb-4">Preencha seus dados e receba contato para iniciar sua mentoria.</p>
+
+                        <form asp-controller="Home" asp-action="Index" method="post">
+                            <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
+
+                            <div class="mb-3">
+                                <label asp-for="Nome" class="form-label"></label>
+                                <input asp-for="Nome" class="form-control" placeholder="Seu nome completo" />
+                                <span asp-validation-for="Nome" class="text-danger"></span>
+                            </div>
+
+                            <div class="mb-3">
+                                <label asp-for="Email" class="form-label"></label>
+                                <input asp-for="Email" class="form-control" placeholder="voce@exemplo.com" />
+                                <span asp-validation-for="Email" class="text-danger"></span>
+                            </div>
+
+                            <div class="mb-3">
+                                <label asp-for="Telefone" class="form-label"></label>
+                                <input asp-for="Telefone" class="form-control" placeholder="(11) 99999-9999" />
+                                <span asp-validation-for="Telefone" class="text-danger"></span>
+                            </div>
+
+                            <div class="mb-3">
+                                <label asp-for="CargoAtual" class="form-label"></label>
+                                <input asp-for="CargoAtual" class="form-control" placeholder="Ex.: Desenvolvedor(a) Backend" />
+                                <span asp-validation-for="CargoAtual" class="text-danger"></span>
+                            </div>
+
+                            <div class="mb-4">
+                                <label asp-for="Mensagem" class="form-label"></label>
+                                <textarea asp-for="Mensagem" class="form-control" rows="4" placeholder="Conte seu principal desafio de carreira"></textarea>
+                                <span asp-validation-for="Mensagem" class="text-danger"></span>
+                            </div>
+
+                            <button type="submit" class="btn btn-primary btn-lg w-100">Quero receber contato</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
