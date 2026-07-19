@@ -91,7 +91,11 @@
 
                             <div class="mb-3">
                                 <label asp-for="Telefone" class="form-label"></label>
-                                <input asp-for="Telefone" class="form-control" placeholder="(11) 99999-9999" />
+                                <input asp-for="Telefone"
+                                       class="form-control"
+                                       placeholder="(XX) XXXXX-XXXX"
+                                       maxlength="15"
+                                       oninput="this.value = this.value.replace(/\D/g, '').replace(/^(\d{2})(\d)/g, '($1) $2').replace(/(\d{5})(\d)/, '$1-$2');" />
                                 <span asp-validation-for="Telefone" class="text-danger"></span>
                             </div>
 
@@ -115,7 +119,3 @@
         </div>
     </div>
 </section>
-
-@section Scripts {
-    <partial name="_ValidationScriptsPartial" />
-}
