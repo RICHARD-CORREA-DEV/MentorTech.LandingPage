@@ -12,7 +12,7 @@ Landing Page de Captura de Leads para apresentar a proposta da MentorTech e conv
 
 - ASP.NET Core MVC
 - Entity Framework Core
-- SQLite
+- MySQL
 - Bootstrap 5
 
 ### Estrutura de pastas
