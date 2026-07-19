@@ -20,17 +20,17 @@ public class HomeController : Controller
     }
 
     [HttpPost]
-    public async Task<IActionResult> Index(Lead model)
+    public IActionResult CapturarLead(Lead lead)
     {
-        if (!ModelState.IsValid)
+        if (ModelState.IsValid)
         {
-            return View(model);
+            _context.Leads.Add(lead);
+            _context.SaveChanges();
+
+            return RedirectToAction(nameof(Sucesso));
         }
 
-        await _context.Leads.AddAsync(model);
-        await _context.SaveChangesAsync();
-
-        return RedirectToAction(nameof(Sucesso));
+        return View("Index", lead);
     }
 
     public IActionResult Sucesso()

@@ -1,4 +1,4 @@
-﻿@model Lead
+﻿@model MentorTech.LandingPage.Models.Lead
 
 @{
     ViewData["Title"] = "Mentoria Tech";
@@ -74,7 +74,7 @@
                         <h2 class="h4 fw-bold mb-1">Fale com a MentorTech</h2>
                         <p class="text-muted mb-4">Preencha seus dados e receba contato para iniciar sua mentoria.</p>
 
-                        <form asp-controller="Home" asp-action="Index" method="post">
+                        <form asp-controller="Home" asp-action="CapturarLead" method="post">
                             <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
 
                             <div class="mb-3">
