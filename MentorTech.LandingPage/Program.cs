@@ -1,5 +1,4 @@
 using MentorTech.LandingPage.Data;
-using MentorTech.LandingPage.Services;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -11,7 +10,6 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
         builder.Configuration.GetConnectionString("DefaultConnection"),
         ServerVersion.AutoDetect(builder.Configuration.GetConnectionString("DefaultConnection"))
     ));
-builder.Services.AddTransient<IEmailService, EmailService>();
 
 var app = builder.Build();
 
