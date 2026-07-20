@@ -1,7 +1,8 @@
 using System.Diagnostics;
 using MentorTech.LandingPage.Data;
-using Microsoft.AspNetCore.Mvc;
 using MentorTech.LandingPage.Models;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace MentorTech.LandingPage.Controllers;
 
@@ -20,17 +21,32 @@ public class HomeController : Controller
     }
 
     [HttpPost]
-    public async Task<IActionResult> CapturarLead(Lead lead)
+    [ValidateAntiForgeryToken]
+    public async Task<IActionResult> CapturarLead(Lead model)
     {
-        if (ModelState.IsValid)
+        if (!ModelState.IsValid)
         {
-            _context.Leads.Add(lead);
+            return View("Index", model);
+        }
+
+        try
+        {
+            model.DataCaptura = DateTime.Now;
+            await _context.Leads.AddAsync(model);
             await _context.SaveChangesAsync();
 
             return RedirectToAction(nameof(Sucesso));
         }
-
-        return View("Index", lead);
+        catch (DbUpdateException)
+        {
+            ModelState.AddModelError(string.Empty, "Nao foi possivel salvar seu cadastro no momento. Tente novamente.");
+            return View("Index", model);
+        }
+        catch (Exception)
+        {
+            ModelState.AddModelError(string.Empty, "Ocorreu um erro inesperado ao processar seu cadastro.");
+            return View("Index", model);
+        }
     }
 
     public IActionResult Sucesso()
